@@ -3,6 +3,22 @@ Self-Driving Car Engineer Nanodegree Program
 
 [image1]: ./images/PID_Run.gif "PID Result" 
 ![alt text][image1]
+
+## Implementation
+## PID components and its significance
+### Propotional 
+  * The proportional portion of the controller tries to steer the car toward the center line (against the cross-track error). If used along, the car overshoots the central line very easily and go out of the road very quickly. 
+
+### Integral 
+  * The integral portion tries to eliminate a possible bias on the controlled system that could prevent the error to be eliminated. If used along, it makes the car to go in circles. In the case of the simulator, no bias is present. 
+
+ ### Derivative 
+   * The differential portion helps to counteract the proportional trend to overshoot the center line by smoothing the approach to it. 
+   
+ ### hyperparameters Selection
+  * The parameters were chosen manually by try and error. First, make sure the car can drive straight with zero as parameters. Then add the proportional and the car start going on following the road but it starts overshooting go out of it. Then add the differential to try to overcome the overshooting. The integral part only moved the car out of the road; so, it stayed as zero. After the car drove the track without going out of it, the parameters increased to minimize the average cross-track error on a single track lap. The final parameters are [P: 0.25, I: 0.0, D: 2.5]. Also the steering value is limited in between -1 to +1 as there is limits on actual car for steering angle, also throttle is adjusted as per steering value i.e for greater than 0.1 steering value throttle is set at 0.1, whereas for leass than 0.1 steering value means for near to streight driving, throttle is set at 0.5 value.
+  
+
 ---
 
 ## Dependencies
